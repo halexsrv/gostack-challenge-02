@@ -5,7 +5,7 @@ class Recipient extends Model {
     super.init(
       {
         street: Sequelize.STRING,
-        number: Sequelize.NUMBER,
+        number: Sequelize.INTEGER,
         complement: Sequelize.STRING,
         state: Sequelize.STRING,
         city: Sequelize.STRING,
