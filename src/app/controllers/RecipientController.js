@@ -1,6 +1,12 @@
 import Recipient from '../models/Recipient';
 
 class RecipientController {
+  async index(req, res) {
+    const recipients = await Recipient.findAll();
+
+    return res.json(recipients);
+  }
+
   async store(req, res) {
     const {
       id,
@@ -30,6 +36,13 @@ class RecipientController {
     } = await recipient.update(req.body);
 
     return res.json({ id, street, number, complement, state, city, zip });
+  }
+
+  async destroy(req, res) {
+    const { id } = req.params;
+    await Recipient.destroy({ where: { id } });
+
+    return res.send();
   }
 }
 
